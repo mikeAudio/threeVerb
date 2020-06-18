@@ -48,7 +48,6 @@ namespace juce
         {
             setParameters(Parameters());
             setSampleRate(44100.0);
-            setNumChannels();
         }
         
         //==============================================================================
@@ -120,10 +119,37 @@ namespace juce
             wetGain2.reset (sampleRate, smoothTime);
         }
         
-        void setNumChannels()
+        void setSampleRateMulti(const double sampleRate)
         {
+            jassert (sampleRate > 0);
             
+            static const short combTunings[] = { 1116, 1188, 1277, 1356, 1422, 1491, 1557, 1617 }; // (at 44100Hz)
+            static const short allPassTunings[] = { 556, 441, 341, 225 };
+            const int stereoSpread = 23;
+            const int intSampleRate = (int) sampleRate;
+            
+            for (int i = 0; i < numCombs; ++i)
+            {
+                comb[0][i].setSize ((intSampleRate * combTunings[i]) / 44100);
+                comb[1][i].setSize ((intSampleRate * (combTunings[i] + stereoSpread)) / 44100);
+                comb[2][i].setSize ((intSampleRate * (combTunings[i] + stereoSpread * 2)) / 44100); //is noch n Versuch
+            }
+            
+            for (int i = 0; i < numAllPasses; ++i)
+            {
+                allPass[0][i].setSize ((intSampleRate * allPassTunings[i]) / 44100);
+                allPass[1][i].setSize ((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
+                allPass[2][i].setSize ((intSampleRate * (allPassTunings[i] + stereoSpread * 2)) / 44100); //is noch n Versuch
+            }
+            
+            const double smoothTime = 0.01;
+            damping .reset (sampleRate, smoothTime);
+            feedback.reset (sampleRate, smoothTime);
+            dryGain .reset (sampleRate, smoothTime);
+            wetGain1.reset (sampleRate, smoothTime);
+            wetGain2.reset (sampleRate, smoothTime);
         }
+
         
         /** Clears the reverb's buffers. */
         void reset()
@@ -273,7 +299,7 @@ namespace juce
                 if (size != bufferSize)
                 {
                     bufferIndex = 0;
-                    buffer.malloc (size);
+                    buffer.malloc(size);
                     bufferSize = size;
                 }
                 
@@ -301,7 +327,8 @@ namespace juce
             
         private:
             HeapBlock<float> buffer;
-              float last = 0.0f;
+            int bufferSize = 0, bufferIndex = 0;
+            float last = 0.0f;
             
             JUCE_DECLARE_NON_COPYABLE (CombFilter)
         };

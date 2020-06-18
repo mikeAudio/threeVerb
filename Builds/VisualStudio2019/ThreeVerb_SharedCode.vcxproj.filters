@@ -454,9 +454,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\ThreeVerb.cpp">
-      <Filter>ThreeVerb\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>ThreeVerb\Source</Filter>
     </ClCompile>

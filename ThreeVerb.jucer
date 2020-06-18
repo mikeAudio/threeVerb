@@ -4,7 +4,6 @@
   <MAINGROUP id="Wh9RaT" name="ThreeVerb">
     <GROUP id="{F3AD5B57-4C96-BF4A-BF32-0F99408CFA93}" name="Source">
       <FILE id="x9gqHd" name="ThreeVerb.h" compile="0" resource="0" file="Source/ThreeVerb.h"/>
-      <FILE id="NKNUxa" name="ThreeVerb.cpp" compile="1" resource="0" file="Source/ThreeVerb.cpp"/>
       <FILE id="W9vzIv" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="Rzraow" name="PluginProcessor.h" compile="0" resource="0"

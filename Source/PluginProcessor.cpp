@@ -85,7 +85,7 @@ void ThreeVerbAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
 {
 
     threeVerb.reset();
-    threeVerb.setSampleRate(sampleRate);
+    threeVerb.setSampleRateMulti(sampleRate);
     
 }
 
