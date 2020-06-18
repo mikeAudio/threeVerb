@@ -48,6 +48,7 @@ namespace juce
         {
             setParameters(Parameters());
             setSampleRate(44100.0);
+            setNumChannels();
         }
         
         //==============================================================================
@@ -119,6 +120,11 @@ namespace juce
             wetGain2.reset (sampleRate, smoothTime);
         }
         
+        void setNumChannels()
+        {
+            
+        }
+        
         /** Clears the reverb's buffers. */
         void reset()
         {
@@ -134,6 +140,46 @@ namespace juce
         
         //==============================================================================
         /** Applies the reverb to two stereo channels of audio data. */
+        
+        void processMulti(float* const left, float* const right, float* const x, const int numSamples) noexcept
+        {
+            jassert (left != nullptr && right != nullptr);
+            
+            for (int i = 0; i < numSamples; ++i)
+            {
+                const float input = (left[i] + right[i] + x[i]) * gain;
+                float outL = 0, outR = 0, outX = 0;
+                
+                const float damp    = damping.getNextValue();
+                const float feedbck = feedback.getNextValue();
+                
+                for (int j = 0; j < numCombs; ++j)  // accumulate the comb filters in parallel
+                {
+                    outL += comb[0][j].process (input, damp, feedbck);
+                    outR += comb[1][j].process (input, damp, feedbck);
+                    outX += comb[2][j].process (input, damp, feedbck);
+                }
+                
+                for (int j = 0; j < numAllPasses; ++j)  // run the allpass filters in series
+                {
+                    outL = allPass[0][j].process (outL);
+                    outR = allPass[1][j].process (outR);
+                    outX = allPass[2][j].process (outR);
+                }
+                
+                const float dry  = dryGain.getNextValue();
+                const float wet1 = wetGain1.getNextValue();
+                const float wet2 = wetGain2.getNextValue();
+                const float wet3 = wetGain3.getNextValue();
+
+                
+                left[i]  = outL * wet1 + outR * wet2 + outX * wet3 + left[i]  * dry;
+                right[i] = outR * wet1 + outX * wet2 + outL * wet3 + right[i] * dry;
+                x[i]     = outX * wet1 + outL * wet2 + outR * wet3 + x[i]     * dry;
+            }
+        }
+        
+        
         void processStereo (float* const left, float* const right, const int numSamples) noexcept
         {
             jassert (left != nullptr && right != nullptr);
@@ -255,8 +301,7 @@ namespace juce
             
         private:
             HeapBlock<float> buffer;
-            int bufferSize = 0, bufferIndex = 0;
-            float last = 0.0f;
+              float last = 0.0f;
             
             JUCE_DECLARE_NON_COPYABLE (CombFilter)
         };
@@ -302,15 +347,18 @@ namespace juce
         };
         
         //==============================================================================
-        enum { numCombs = 8, numAllPasses = 4, numChannels = 2 };
+        
+        
+        enum { numCombs = 8, numAllPasses = 4};
         
         Parameters parameters;
         float gain;
+        int const static numChannels = 3;
         
         CombFilter comb [numChannels][numCombs];
         AllPassFilter allPass [numChannels][numAllPasses];
         
-        SmoothedValue<float> damping, feedback, dryGain, wetGain1, wetGain2;
+        SmoothedValue<float> damping, feedback, dryGain, wetGain1, wetGain2, wetGain3;
         
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThreeVerb)
     };

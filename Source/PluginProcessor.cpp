@@ -7,9 +7,9 @@ ThreeVerbAudioProcessor::ThreeVerbAudioProcessor()
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::stereo(), true)
+                       .withInput  ("Input",  AudioChannelSet::createLCR(), true)
                       #endif
-                       .withOutput ("Output", AudioChannelSet::stereo(), true)
+                       .withOutput ("Output", AudioChannelSet::createLCR(), true)
                      #endif
                        )
 #endif
@@ -127,14 +127,12 @@ void ThreeVerbAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuff
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-    
-    
 
         auto const channelPointer1 = buffer.getWritePointer(0);
         auto const channelPointer2 = buffer.getWritePointer(1);
         auto const channelPointer3 = buffer.getWritePointer(2);
     
-    threeVerb.processStereo(channelPointer1, channelPointer2, buffer.getNumSamples());
+    threeVerb.processMulti(channelPointer1, channelPointer2, channelPointer3, buffer.getNumSamples());
         
 
     
