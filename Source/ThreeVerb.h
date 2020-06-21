@@ -65,7 +65,7 @@ namespace juce
         
         //==============================================================================
         /** Returns the reverb's current parameters. */
-        const Parameters& getParameters() const noexcept    { return parameters; }
+        const Parameters& getParameters() const noexcept {return parameters;}
         
         /** Applies a new set of parameters to the reverb.
          Note that this doesn't attempt to lock the reverb, so if you call this in parallel with
@@ -119,7 +119,7 @@ namespace juce
             wetGain2.reset (sampleRate, smoothTime);
         }
         
-        void setSampleRateMulti(const double sampleRate)
+        void setSampleRateMulti(const double sampleRate, int numChannels)
         {
             jassert (sampleRate > 0);
             
@@ -128,18 +128,17 @@ namespace juce
             const int stereoSpread = 23;
             const int intSampleRate = (int) sampleRate;
             
-            for (int i = 0; i < numCombs; ++i)
+            for(int channel = 0; channel < numChannels; channel++)
             {
-                comb[0][i].setSize ((intSampleRate * combTunings[i]) / 44100);
-                comb[1][i].setSize ((intSampleRate * (combTunings[i] + stereoSpread)) / 44100);
-                comb[2][i].setSize ((intSampleRate * (combTunings[i] + stereoSpread * 2)) / 44100); //is noch n Versuch
-            }
-            
-            for (int i = 0; i < numAllPasses; ++i)
-            {
-                allPass[0][i].setSize ((intSampleRate * allPassTunings[i]) / 44100);
-                allPass[1][i].setSize ((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
-                allPass[2][i].setSize ((intSampleRate * (allPassTunings[i] + stereoSpread * 2)) / 44100); //is noch n Versuch
+                for (int i = 0; i < numCombs; ++i)
+                {
+                    comb[channel][i].setSize ((intSampleRate * (combTunings[i] + stereoSpread * channel)) / 44100);
+                }
+                
+                for (int i = 0; i < numAllPasses; ++i)
+                {
+                    allPass[channel][i].setSize ((intSampleRate * (allPassTunings[i] + stereoSpread * channel)) / 44100);
+                }
             }
             
             const double smoothTime = 0.01;
@@ -148,6 +147,7 @@ namespace juce
             dryGain .reset (sampleRate, smoothTime);
             wetGain1.reset (sampleRate, smoothTime);
             wetGain2.reset (sampleRate, smoothTime);
+            wetGain3.reset (sampleRate, smoothTime);
         }
 
         
@@ -167,9 +167,11 @@ namespace juce
         //==============================================================================
         /** Applies the reverb to two stereo channels of audio data. */
         
-        void processMulti(float* const left, float* const right, float* const x, const int numSamples) noexcept
+        void processMulti(float* const left, float* const right, float* const x, AudioBuffer<float>& buffer, const int numSamples) noexcept
         {
             jassert (left != nullptr && right != nullptr);
+            
+            const int numChannels = buffer.getNumChannels();
             
             for (int i = 0; i < numSamples; ++i)
             {

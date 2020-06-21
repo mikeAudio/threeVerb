@@ -85,7 +85,7 @@ void ThreeVerbAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
 {
 
     threeVerb.reset();
-    threeVerb.setSampleRateMulti(sampleRate);
+    threeVerb.setSampleRateMulti(sampleRate, 3);
     
 }
 
@@ -132,7 +132,7 @@ void ThreeVerbAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuff
         auto const channelPointer2 = buffer.getWritePointer(1);
         auto const channelPointer3 = buffer.getWritePointer(2);
     
-    threeVerb.processMulti(channelPointer1, channelPointer2, channelPointer3, buffer.getNumSamples());
+    threeVerb.processMulti(channelPointer1, channelPointer2, channelPointer3, buffer, buffer.getNumSamples());
         
 
     
