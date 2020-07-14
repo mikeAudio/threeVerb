@@ -172,27 +172,34 @@ namespace juce
             jassert (left != nullptr && right != nullptr);
             
             const int numChannels = buffer.getNumChannels();
+            std::vector<float> outputVector;
             
+        
             for (int i = 0; i < numSamples; ++i)
             {
-                const float input = (left[i] + right[i] + x[i]) * gain;
-                float outL = 0, outR = 0, outX = 0;
+                
+                float input = 0;
+                for (int channel = 0; channel < numChannels; channel++) {input += buffer.getSample(channel, i);}
+                input *= gain;
                 
                 const float damp    = damping.getNextValue();
                 const float feedbck = feedback.getNextValue();
                 
-                for (int j = 0; j < numCombs; ++j)  // accumulate the comb filters in parallel
+                for(int channel = 0; channel < numChannels; channel++)
                 {
-                    outL += comb[0][j].process (input, damp, feedbck);
-                    outR += comb[1][j].process (input, damp, feedbck);
-                    outX += comb[2][j].process (input, damp, feedbck);
-                }
-                
-                for (int j = 0; j < numAllPasses; ++j)  // run the allpass filters in series
-                {
-                    outL = allPass[0][j].process (outL);
-                    outR = allPass[1][j].process (outR);
-                    outX = allPass[2][j].process (outR);
+ 
+                    float outChannel = 0;
+                    outputVector.push_back(outChannel);
+                    
+                    for (int j = 0; j < numCombs; ++j)  // accumulate the comb filters in parallel
+                    {
+                        outputVector[channel] += comb[0][j].process (input, damp, feedbck);
+                    }
+                    
+                    for (int j = 0; j < numAllPasses; ++j)  // run the allpass filters in series
+                    {
+                        outputVector[channel] = allPass[channel][j].process (outputVector[channel]);
+                    }
                 }
                 
                 const float dry  = dryGain.getNextValue();
@@ -200,6 +207,8 @@ namespace juce
                 const float wet2 = wetGain2.getNextValue();
                 const float wet3 = wetGain3.getNextValue();
 
+                
+                        // DIE OUTPUT MATRIX      *** wohooooo ***
                 
                 left[i]  = outL * wet1 + outR * wet2 + outX * wet3 + left[i]  * dry;
                 right[i] = outR * wet1 + outX * wet2 + outL * wet3 + right[i] * dry;
