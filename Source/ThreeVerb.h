@@ -133,9 +133,11 @@ namespace juce
             static const short combTunings[] = {1116, 1188, 1277, 1356, 1422, 1491, 1557, 1617}; // (at 44100Hz)
             static const short allPassTunings[] = {556, 441, 341, 225};
             const int stereoSpread = 23;
-            const int intSampleRate = (int) sampleRate;
+            const int intSampleRate = (int)sampleRate;
             
-            //Initialize comb- & allPass-filters
+            outputVector.reserve(numChannels);
+            
+            //Prepare Comb and Allpass Vectors
             for(int channel = 0; channel < numChannels; channel++)
             {
                 for (int i = 0; i < numCombs; ++i)
@@ -146,7 +148,6 @@ namespace juce
                 for (int i = 0; i < numAllPasses; ++i)
                 {
                     allPass[channel][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread * channel)) / 44100);
-
                 }
             }
             
@@ -177,8 +178,6 @@ namespace juce
                 for (int i = 0; i < numAllPasses; ++i)
                     allPass[j][i].clear();
             }
-            
-            outputVector.reserve(numChannels);
         }
         
         //==============================================================================
@@ -190,21 +189,21 @@ namespace juce
             const int numChannels = audioBuffer.getNumChannels();
             const int numSamples  = audioBuffer.getNumSamples();
             outputVector.clear();
-            
         
             for (int i = 0; i < numSamples; ++i)
             {
-                
                 float input = 0;
-                for (int channel = 0; channel < numChannels; channel++) {input += audioBuffer.getSample(channel, i);} //create Mono Signal
-                input *= gain;                                                                                   //amplify it
+                //for (int channel = 0; channel < numChannels; channel++) {input += audioBuffer.getSample(channel, i);} 
+                
                 
                 const float damp    = damping.getNextValue();
                 const float feedbck = feedback.getNextValue();
                 
                 for(int channel = 0; channel < numChannels; channel++)
                 {
- 
+                    input = audioBuffer.getSample(channel, i);
+                    input *= gain;
+                    
                     float outChannel = 0;
                     outputVector.push_back(outChannel); // Vector of Channels, later used to store the wet output
                     
@@ -223,19 +222,6 @@ namespace juce
                     const float drySample = audioBuffer.getSample(channel, i);
                     audioBuffer.setSample(channel, i, outputVector[channel] * wet + drySample * dry);
                 }
-                
-                        // DIE OUTPUT MATRIX      *** wohooooo ***
-                
-                
-                
-                
-                
-                /*
-                
-                left[i]  = outL * wet1 + outR * wet2 + outX * wet3 + left[i]  * dry;
-                right[i] = outR * wet1 + outX * wet2 + outL * wet3 + right[i] * dry;
-                x[i]     = outX * wet1 + outL * wet2 + outR * wet3 + x[i]     * dry;
-                 */
             }
         }
         
@@ -418,7 +404,13 @@ namespace juce
         
         CombFilter comb [numChannels][numCombs];
         AllPassFilter allPass [numChannels][numAllPasses];
+        /*
+        std::vector<CombFilter> combs;
+        std::vector<AllPassFilter> allPass;
         
+        std::vector<std::vector<CombFilter>> combChannels;
+        std::vector<std::vector<AllPassFilter>> allPassChannels;
+        */
         SmoothedValue<float> damping, feedback, dryGain, wetGain1, wetGain2;
         std::vector<SmoothedValue<float>> wetGainVector;
         
