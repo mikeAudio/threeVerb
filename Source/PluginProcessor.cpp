@@ -7,9 +7,9 @@ ThreeVerbAudioProcessor::ThreeVerbAudioProcessor()
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::createLCR(), true)
+                       .withInput  ("Input",  AudioChannelSet::createLCRS(), true)
                       #endif
-                       .withOutput ("Output", AudioChannelSet::createLCR(), true)
+                       .withOutput ("Output", AudioChannelSet::createLCRS(), true)
                      #endif
                        )
 #endif
@@ -128,12 +128,7 @@ void ThreeVerbAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuff
 
     
     threeVerb.processMulti(buffer);
-        
 
-    
-    
-    
-    
 }
 bool ThreeVerbAudioProcessor::hasEditor() const
 {

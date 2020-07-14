@@ -145,17 +145,15 @@ namespace juce
                 
                 for (int i = 0; i < numAllPasses; ++i)
                 {
-                    allPass[0][i].setSize((intSampleRate * (allPassTunings[i])) / 44100);
-                    allPass[1][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
-                    allPass[2][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
-                    allPass[3][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
+                    allPass[channel][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread * channel)) / 44100);
+
                 }
             }
             
             const double smoothTime = 0.01;
-            damping .reset (sampleRate, smoothTime);
-            feedback.reset (sampleRate, smoothTime);
-            dryGain .reset (sampleRate, smoothTime);
+            damping .reset(sampleRate, smoothTime);
+            feedback.reset(sampleRate, smoothTime);
+            dryGain .reset(sampleRate, smoothTime);
             
             //Initialize wetGains
             for(int channel = 0; channel < numChannels; channel++)
@@ -179,6 +177,8 @@ namespace juce
                 for (int i = 0; i < numAllPasses; ++i)
                     allPass[j][i].clear();
             }
+            
+            outputVector.reserve(numChannels);
         }
         
         //==============================================================================
@@ -189,7 +189,7 @@ namespace juce
             
             const int numChannels = audioBuffer.getNumChannels();
             const int numSamples  = audioBuffer.getNumSamples();
-            std::vector<float> outputVector;
+            outputVector.clear();
             
         
             for (int i = 0; i < numSamples; ++i)
@@ -222,10 +222,6 @@ namespace juce
                     const float wet       = wetGainVector[channel].getNextValue();
                     const float drySample = audioBuffer.getSample(channel, i);
                     audioBuffer.setSample(channel, i, outputVector[channel] * wet + drySample * dry);
-
-
-
-
                 }
                 
                         // DIE OUTPUT MATRIX      *** wohooooo ***
@@ -417,7 +413,8 @@ namespace juce
         
         Parameters parameters;
         float gain;
-        int const static numChannels = 3;
+        int const static numChannels = 4;
+        std::vector<float> outputVector;
         
         CombFilter comb [numChannels][numCombs];
         AllPassFilter allPass [numChannels][numAllPasses];
