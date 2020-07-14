@@ -183,6 +183,27 @@
 			path = System/Library/Frameworks/Cocoa.framework;
 			sourceTree = SDKROOT;
 		};
+		071552995A9E1233718EC50A = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_opengl";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_opengl";
+			sourceTree = "<absolute>";
+		};
+		097C2CD32D9CCE3FA51C6D48 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_dsp";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_dsp";
+			sourceTree = "<absolute>";
+		};
+		0A896B59ECD26AB99CA79330 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_events";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_events";
+			sourceTree = "<absolute>";
+		};
 		13442ABC51E3E781FDBC8988 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -196,13 +217,6 @@
 			name = ThreeVerb.h;
 			path = ../../Source/ThreeVerb.h;
 			sourceTree = "SOURCE_ROOT";
-		};
-		13E16A8153376D1F6DAE9837 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_opengl";
-			path = "/Applications/JUCE/modules/juce_opengl";
-			sourceTree = "<absolute>";
 		};
 		166F0D405BE1816AD555F64A = {
 			isa = PBXFileReference;
@@ -225,12 +239,33 @@
 			path = RecentFilesMenuTemplate.nib;
 			sourceTree = "SOURCE_ROOT";
 		};
+		1EA51A8EC2CA6C38D774EABF = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_plugin_client";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client";
+			sourceTree = "<absolute>";
+		};
 		216F08E737E9885C029E2981 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.plist.xml;
 			name = "Info-VST3.plist";
 			path = "Info-VST3.plist";
 			sourceTree = "SOURCE_ROOT";
+		};
+		2A30FD035A2FCB70A927E343 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_cryptography";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_cryptography";
+			sourceTree = "<absolute>";
+		};
+		2A32432BFA968666B5C86871 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_graphics";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_graphics";
+			sourceTree = "<absolute>";
 		};
 		2AC0A11F102089B2B66AF069 = {
 			isa = PBXFileReference;
@@ -246,26 +281,12 @@
 			path = "../../JuceLibraryCode/include_juce_core.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		311D81F46F668C8A3CA8F63D = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_audio_utils";
-			path = "/Applications/JUCE/modules/juce_audio_utils";
-			sourceTree = "<absolute>";
-		};
 		326D8E7386A8A80709155C8B = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_audio_formats.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_formats.mm";
 			sourceTree = "SOURCE_ROOT";
-		};
-		37F0CA2EB56A15C838388522 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_audio_devices";
-			path = "/Applications/JUCE/modules/juce_audio_devices";
-			sourceTree = "<absolute>";
 		};
 		3EC4AA564835E08DF2205920 = {
 			isa = PBXFileReference;
@@ -295,13 +316,6 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST_utils.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		4BA5CE45F8184DDA6C493704 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_audio_plugin_client";
-			path = "/Applications/JUCE/modules/juce_audio_plugin_client";
-			sourceTree = "<absolute>";
-		};
 		4EFE6D6612941B1EC650DF04 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -330,13 +344,6 @@
 			path = "../../JuceLibraryCode/include_juce_gui_basics.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		61F8BA28DE75CE24121B9338 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_dsp";
-			path = "/Applications/JUCE/modules/juce_dsp";
-			sourceTree = "<absolute>";
-		};
 		6F8F937BAD35DA51A7CB069B = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -351,19 +358,12 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
-		75BF60D95D9BF5BDB3ECC952 = {
+		7E22436F9B03D147B8B50B46 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_cryptography";
-			path = "/Applications/JUCE/modules/juce_cryptography";
+			name = "juce_audio_basics";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_basics";
 			sourceTree = "<absolute>";
-		};
-		78DBD9784868B3B5C449765B = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.objcpp;
-			name = "include_juce_events.mm";
-			path = "../../JuceLibraryCode/include_juce_events.mm";
-			sourceTree = "SOURCE_ROOT";
 		};
 		ABCD1967DD16FBA022440137 = {
 			isa = PBXFileReference;
@@ -400,6 +400,20 @@
 			path = "../../JuceLibraryCode/include_juce_gui_extra.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		78CB24E4C6791B1F69F5D96F = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_devices";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_devices";
+			sourceTree = "<absolute>";
+		};
+		78DBD9784868B3B5C449765B = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_juce_events.mm";
+			path = "../../JuceLibraryCode/include_juce_events.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
 		7CDE9398A98F4605162E9AAA = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -413,6 +427,20 @@
 			name = PluginProcessor.h;
 			path = ../../Source/PluginProcessor.h;
 			sourceTree = "SOURCE_ROOT";
+		};
+		8D730D31BFBE6C85C8CAFA36 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_core";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_core";
+			sourceTree = "<absolute>";
+		};
+		902FFA3577C0765970F00659 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_utils";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_utils";
+			sourceTree = "<absolute>";
 		};
 		91D9E0C1E8945DE6E0184CCA = {
 			isa = PBXFileReference;
@@ -428,6 +456,13 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST3.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
+		94B70E8C26FF400E4D60ECE7 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_audio_processors";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors";
+			sourceTree = "<absolute>";
+		};
 		957AB4FA54552DEBFD62B018 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -435,11 +470,11 @@
 			path = System/Library/Frameworks/Carbon.framework;
 			sourceTree = SDKROOT;
 		};
-		96DAB1BFF2B81C14F743BC50 = {
+		95EB912C9681A0696193D6EB = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_audio_formats";
-			path = "/Applications/JUCE/modules/juce_audio_formats";
+			name = "juce_gui_extra";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_gui_extra";
 			sourceTree = "<absolute>";
 		};
 		A0FC2417034530EBA1E3BA1E = {
@@ -463,18 +498,18 @@
 			path = System/Library/Frameworks/AudioToolbox.framework;
 			sourceTree = SDKROOT;
 		};
-		AA175779D4265A289652052C = {
+		B44B85714ADA13C321266EA4 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_core";
-			path = "/Applications/JUCE/modules/juce_core";
+			name = "juce_gui_basics";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_gui_basics";
 			sourceTree = "<absolute>";
 		};
-		AB3D82D2559BBBA0F8BD75E6 = {
+		BBB234CAEEEE8F5D7A934EA5 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
-			name = "juce_audio_processors";
-			path = "/Applications/JUCE/modules/juce_audio_processors";
+			name = "juce_audio_formats";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_formats";
 			sourceTree = "<absolute>";
 		};
 		C02062486EEEC34520E934B3 = {
@@ -512,20 +547,6 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU_2.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		D2CEA64D00978F226FEBD2A0 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_audio_basics";
-			path = "/Applications/JUCE/modules/juce_audio_basics";
-			sourceTree = "<absolute>";
-		};
-		D3221C98921F696F04C5CFE2 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_gui_extra";
-			path = "/Applications/JUCE/modules/juce_gui_extra";
-			sourceTree = "<absolute>";
-		};
 		D63AEE47128EA3D4544291D9 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -539,20 +560,6 @@
 			name = "Info-AU.plist";
 			path = "Info-AU.plist";
 			sourceTree = "SOURCE_ROOT";
-		};
-		DB5A572A79A470FD631AE8FF = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_gui_basics";
-			path = "/Applications/JUCE/modules/juce_gui_basics";
-			sourceTree = "<absolute>";
-		};
-		DE139B73EB924388F9F70750 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_events";
-			path = "/Applications/JUCE/modules/juce_events";
-			sourceTree = "<absolute>";
 		};
 		DEEFD4A8615B48404A6894F5 = {
 			isa = PBXFileReference;
@@ -575,12 +582,12 @@
 			path = System/Library/Frameworks/DiscRecording.framework;
 			sourceTree = SDKROOT;
 		};
-		EAED0774E992814F435905D4 = {
+		F0CFD29A2587000193C3873B = {
 			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_data_structures";
-			path = "/Applications/JUCE/modules/juce_data_structures";
-			sourceTree = "<absolute>";
+			lastKnownFileType = sourcecode.c.h;
+			name = JucePluginDefines.h;
+			path = ../../JuceLibraryCode/JucePluginDefines.h;
+			sourceTree = "SOURCE_ROOT";
 		};
 		F2B6D57388E59F768CC0DF7D = {
 			isa = PBXFileReference;
@@ -588,6 +595,13 @@
 			name = "include_juce_audio_plugin_client_AU.r";
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU.r";
 			sourceTree = "SOURCE_ROOT";
+		};
+		F7201AFFE65FD3F3DE190365 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_data_structures";
+			path = "/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_data_structures";
+			sourceTree = "<absolute>";
 		};
 		F8DBD1A3EC9F0882C40B2B52 = {
 			isa = PBXFileReference;
@@ -609,13 +623,6 @@
 			name = "include_juce_audio_devices.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_devices.mm";
 			sourceTree = "SOURCE_ROOT";
-		};
-		FDBFEAFEC3DED6364BB69FB6 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_graphics";
-			path = "/Applications/JUCE/modules/juce_graphics";
-			sourceTree = "<absolute>";
 		};
 		DF9FE6CDB1A3AEDCC643AFC1 = {
 			isa = PBXGroup;
@@ -640,21 +647,21 @@
 		35BADCEE16CA7B1840B5822F = {
 			isa = PBXGroup;
 			children = (
-				D2CEA64D00978F226FEBD2A0,
-				37F0CA2EB56A15C838388522,
-				96DAB1BFF2B81C14F743BC50,
-				4BA5CE45F8184DDA6C493704,
-				AB3D82D2559BBBA0F8BD75E6,
-				311D81F46F668C8A3CA8F63D,
-				AA175779D4265A289652052C,
-				75BF60D95D9BF5BDB3ECC952,
-				EAED0774E992814F435905D4,
-				61F8BA28DE75CE24121B9338,
-				DE139B73EB924388F9F70750,
-				FDBFEAFEC3DED6364BB69FB6,
-				DB5A572A79A470FD631AE8FF,
-				D3221C98921F696F04C5CFE2,
-				13E16A8153376D1F6DAE9837,
+				7E22436F9B03D147B8B50B46,
+				78CB24E4C6791B1F69F5D96F,
+				BBB234CAEEEE8F5D7A934EA5,
+				1EA51A8EC2CA6C38D774EABF,
+				94B70E8C26FF400E4D60ECE7,
+				902FFA3577C0765970F00659,
+				8D730D31BFBE6C85C8CAFA36,
+				2A30FD035A2FCB70A927E343,
+				F7201AFFE65FD3F3DE190365,
+				097C2CD32D9CCE3FA51C6D48,
+				0A896B59ECD26AB99CA79330,
+				2A32432BFA968666B5C86871,
+				B44B85714ADA13C321266EA4,
+				95EB912C9681A0696193D6EB,
+				071552995A9E1233718EC50A,
 			);
 			name = "JUCE Modules";
 			sourceTree = "<group>";
@@ -685,6 +692,7 @@
 				7622AAA8AE656B02EA7B3A2D,
 				166F0D405BE1816AD555F64A,
 				7CDE9398A98F4605162E9AAA,
+				F0CFD29A2587000193C3873B,
 			);
 			name = "JUCE Library Code";
 			sourceTree = "<group>";
@@ -744,6 +752,34 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		2962685655A19DCF320B70E3 = {
+			isa = PBXTargetDependency;
+			target = B9AA180A145AFAA42E608993;
+		};
+		8B393D768474C96770F3CF0E = {
+			isa = PBXTargetDependency;
+			target = 4CE357B1527048D2CAD9DA8A;
+		};
+		8A7A2B404969AA58DE658638 = {
+			isa = PBXTargetDependency;
+			target = 01104283B4A146C085E175C2;
+		};
+		1F844E0E1FAA0331D015E942 = {
+			isa = PBXTargetDependency;
+			target = A56A51940A7F836EAF2E0514;
+		};
+		03E8FB8F14DC99C614F60E6C = {
+			isa = PBXTargetDependency;
+			target = A56A51940A7F836EAF2E0514;
+		};
+		981BFE81FEF58A63281F4F94 = {
+			isa = PBXTargetDependency;
+			target = A56A51940A7F836EAF2E0514;
+		};
+		DD6211A0CB1BA9C4F81A592A = {
+			isa = PBXTargetDependency;
+			target = A56A51940A7F836EAF2E0514;
+		};
 		725DCAF14B1D1C22968B7201 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -763,7 +799,7 @@
 		1901202001F949628351AC99 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -792,11 +828,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-VST3.plist;
@@ -805,7 +840,7 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lThreeVerb";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -815,7 +850,7 @@
 		27FB7A27273AA2BFFE46FA5C = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -841,15 +876,13 @@
 					"JucePlugin_Build_Standalone=0",
 					"JucePlugin_Build_Unity=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-VST3.plist;
@@ -859,7 +892,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lThreeVerb";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -869,7 +902,7 @@
 		21925B3543180FFF4964A126 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -898,11 +931,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-AU.plist;
@@ -912,7 +944,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lThreeVerb";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = component;
@@ -922,7 +954,7 @@
 		29D0D154C3CE71FEB1C48BEB = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -948,15 +980,13 @@
 					"JucePlugin_Build_Standalone=0",
 					"JucePlugin_Build_Unity=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-AU.plist;
@@ -967,7 +997,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lThreeVerb";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = component;
@@ -977,7 +1007,7 @@
 		1FC1B631384BA14416227959 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1003,18 +1033,17 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-lThreeVerb";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				USE_HEADERMAP = NO;
 			};
@@ -1023,7 +1052,7 @@
 		D5373CDD93FFC9673DA27F24 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1047,14 +1076,12 @@
 					"JucePlugin_Build_Standalone=1",
 					"JucePlugin_Build_Unity=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
@@ -1062,7 +1089,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-lThreeVerb";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				USE_HEADERMAP = NO;
 			};
@@ -1071,7 +1098,7 @@
 		E032BCB373182628AE2B26C3 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1098,16 +1125,15 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1117,7 +1143,7 @@
 		979B32D8040CF22464AD56A3 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1142,20 +1168,18 @@
 					"JucePlugin_Build_Unity=0",
 					"JUCE_SHARED_CODE=1",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Applications/JUCE/VST_SDK/VST3_SDK",
-					"/Applications/JUCE/modules/juce_audio_plugin_client/VST",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
-					"/Applications/JUCE/modules",
-					"/Applications/JUCE/modules/juce_audio_plugin_client",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules",
+					"/Users/macbook/ModernCircuits/plugins-master/3rd_party/JUCE/modules/juce_audio_plugin_client",
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ThreeVerb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VSTurbo.ThreeVerb;
 				PRODUCT_NAME = "ThreeVerb";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1187,11 +1211,12 @@
 				CODE_SIGN_IDENTITY = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
@@ -1235,10 +1260,12 @@
 				CODE_SIGN_IDENTITY = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
@@ -1255,22 +1282,6 @@
 				ZERO_LINK = NO;
 			};
 			name = Release;
-		};
-		56005076568F49659BB356BC = {
-			isa = PBXTargetDependency;
-			target = B9AA180A145AFAA42E608993;
-		};
-		33B7872825906A9DF052D8E3 = {
-			isa = PBXTargetDependency;
-			target = 4CE357B1527048D2CAD9DA8A;
-		};
-		D3A252E49C9B2D5820499001 = {
-			isa = PBXTargetDependency;
-			target = 01104283B4A146C085E175C2;
-		};
-		1A8F157CAF2E860EF42EAC41 = {
-			isa = PBXTargetDependency;
-			target = A56A51940A7F836EAF2E0514;
 		};
 		37CC465D9AF0A90052DAE327 = {
 			isa = XCConfigurationList;
@@ -1296,10 +1307,10 @@
 			buildPhases = ( );
 			buildRules = ( );
 			dependencies = (
-				56005076568F49659BB356BC,
-				33B7872825906A9DF052D8E3,
-				D3A252E49C9B2D5820499001,
-				1A8F157CAF2E860EF42EAC41,
+				2962685655A19DCF320B70E3,
+				8B393D768474C96770F3CF0E,
+				8A7A2B404969AA58DE658638,
+				1F844E0E1FAA0331D015E942,
 			);
 			name = "ThreeVerb - All";
 			productName = ThreeVerb;
@@ -1358,7 +1369,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1A8F157CAF2E860EF42EAC41,
+				03E8FB8F14DC99C614F60E6C,
 			);
 			name = "ThreeVerb - VST3";
 			productName = ThreeVerb;
@@ -1430,7 +1441,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1A8F157CAF2E860EF42EAC41,
+				981BFE81FEF58A63281F4F94,
 			);
 			name = "ThreeVerb - AU";
 			productName = ThreeVerb;
@@ -1491,7 +1502,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1A8F157CAF2E860EF42EAC41,
+				DD6211A0CB1BA9C4F81A592A,
 			);
 			name = "ThreeVerb - Standalone Plugin";
 			productName = ThreeVerb;
@@ -1548,7 +1559,7 @@
 		7393E3AA0A3B13C546D69104 = {
 			isa = PBXProject;
 			buildConfigurationList = 37CC465D9AF0A90052DAE327;
-			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = ""; TargetAttributes = { 31B3DF1643D25EA2978F6342 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };B9AA180A145AFAA42E608993 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };4CE357B1527048D2CAD9DA8A = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };01104283B4A146C085E175C2 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };A56A51940A7F836EAF2E0514 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = "VSTurbo"; TargetAttributes = { 31B3DF1643D25EA2978F6342 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };B9AA180A145AFAA42E608993 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };4CE357B1527048D2CAD9DA8A = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };01104283B4A146C085E175C2 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };A56A51940A7F836EAF2E0514 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = 30B20FD829B86693BF0DEC13;

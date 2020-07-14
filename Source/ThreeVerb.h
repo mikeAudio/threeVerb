@@ -81,6 +81,13 @@ namespace juce
             wetGain1.setTargetValue (0.5f * wet * (1.0f + newParams.width));
             wetGain2.setTargetValue (0.5f * wet * (1.0f - newParams.width));
             
+            
+            //set wetGains FOR AMBISONICS B FORMAT!!
+            for(auto& w : wetGainVector)
+            {
+                w.setTargetValue(0.5f * wet * (1.0f + newParams.width));
+            }
+            
             gain = isFrozen (newParams.freezeMode) ? 0.0f : 0.015f;
             parameters = newParams;
             updateDamping();
@@ -123,21 +130,25 @@ namespace juce
         {
             jassert (sampleRate > 0);
             
-            static const short combTunings[] = { 1116, 1188, 1277, 1356, 1422, 1491, 1557, 1617 }; // (at 44100Hz)
-            static const short allPassTunings[] = { 556, 441, 341, 225 };
+            static const short combTunings[] = {1116, 1188, 1277, 1356, 1422, 1491, 1557, 1617}; // (at 44100Hz)
+            static const short allPassTunings[] = {556, 441, 341, 225};
             const int stereoSpread = 23;
             const int intSampleRate = (int) sampleRate;
             
+            //Initialize comb- & allPass-filters
             for(int channel = 0; channel < numChannels; channel++)
             {
                 for (int i = 0; i < numCombs; ++i)
                 {
-                    comb[channel][i].setSize ((intSampleRate * (combTunings[i] + stereoSpread * channel)) / 44100);
+                    comb[channel][i].setSize((intSampleRate * (combTunings[i] + stereoSpread * channel)) / 44100);
                 }
                 
                 for (int i = 0; i < numAllPasses; ++i)
                 {
-                    allPass[channel][i].setSize ((intSampleRate * (allPassTunings[i] + stereoSpread * channel)) / 44100);
+                    allPass[0][i].setSize((intSampleRate * (allPassTunings[i])) / 44100);
+                    allPass[1][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
+                    allPass[2][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
+                    allPass[3][i].setSize((intSampleRate * (allPassTunings[i] + stereoSpread)) / 44100);
                 }
             }
             
@@ -145,9 +156,15 @@ namespace juce
             damping .reset (sampleRate, smoothTime);
             feedback.reset (sampleRate, smoothTime);
             dryGain .reset (sampleRate, smoothTime);
-            wetGain1.reset (sampleRate, smoothTime);
-            wetGain2.reset (sampleRate, smoothTime);
-            wetGain3.reset (sampleRate, smoothTime);
+            
+            //Initialize wetGains
+            for(int channel = 0; channel < numChannels; channel++)
+            {
+                SmoothedValue<float> wetGain;
+                wetGainVector.push_back(wetGain);
+                wetGainVector[channel].reset(sampleRate, smoothTime);
+            }
+
         }
 
         
@@ -167,11 +184,11 @@ namespace juce
         //==============================================================================
         /** Applies the reverb to two stereo channels of audio data. */
         
-        void processMulti(float* const left, float* const right, float* const x, AudioBuffer<float>& buffer, const int numSamples) noexcept
+        void processMulti(AudioBuffer<float>& audioBuffer) noexcept
         {
-            jassert (left != nullptr && right != nullptr);
             
-            const int numChannels = buffer.getNumChannels();
+            const int numChannels = audioBuffer.getNumChannels();
+            const int numSamples  = audioBuffer.getNumSamples();
             std::vector<float> outputVector;
             
         
@@ -179,8 +196,8 @@ namespace juce
             {
                 
                 float input = 0;
-                for (int channel = 0; channel < numChannels; channel++) {input += buffer.getSample(channel, i);}
-                input *= gain;
+                for (int channel = 0; channel < numChannels; channel++) {input += audioBuffer.getSample(channel, i);} //create Mono Signal
+                input *= gain;                                                                                   //amplify it
                 
                 const float damp    = damping.getNextValue();
                 const float feedbck = feedback.getNextValue();
@@ -189,30 +206,40 @@ namespace juce
                 {
  
                     float outChannel = 0;
-                    outputVector.push_back(outChannel);
+                    outputVector.push_back(outChannel); // Vector of Channels, later used to store the wet output
                     
                     for (int j = 0; j < numCombs; ++j)  // accumulate the comb filters in parallel
                     {
-                        outputVector[channel] += comb[0][j].process (input, damp, feedbck);
+                        outputVector[channel] += comb[0][j].process(input, damp, feedbck);
                     }
                     
                     for (int j = 0; j < numAllPasses; ++j)  // run the allpass filters in series
                     {
-                        outputVector[channel] = allPass[channel][j].process (outputVector[channel]);
+                        outputVector[channel] = allPass[channel][j].process(outputVector[channel]);
                     }
+
+                    const float dry       = dryGain.getNextValue();
+                    const float wet       = wetGainVector[channel].getNextValue();
+                    const float drySample = audioBuffer.getSample(channel, i);
+                    audioBuffer.setSample(channel, i, outputVector[channel] * wet + drySample * dry);
+
+
+
+
                 }
                 
-                const float dry  = dryGain.getNextValue();
-                const float wet1 = wetGain1.getNextValue();
-                const float wet2 = wetGain2.getNextValue();
-                const float wet3 = wetGain3.getNextValue();
-
-                
                         // DIE OUTPUT MATRIX      *** wohooooo ***
+                
+                
+                
+                
+                
+                /*
                 
                 left[i]  = outL * wet1 + outR * wet2 + outX * wet3 + left[i]  * dry;
                 right[i] = outR * wet1 + outX * wet2 + outL * wet3 + right[i] * dry;
                 x[i]     = outX * wet1 + outL * wet2 + outR * wet3 + x[i]     * dry;
+                 */
             }
         }
         
@@ -355,7 +382,7 @@ namespace juce
                 if (size != bufferSize)
                 {
                     bufferIndex = 0;
-                    buffer.malloc (size);
+                    buffer.malloc(size);
                     bufferSize = size;
                 }
                 
@@ -386,7 +413,6 @@ namespace juce
         
         //==============================================================================
         
-        
         enum { numCombs = 8, numAllPasses = 4};
         
         Parameters parameters;
@@ -396,9 +422,10 @@ namespace juce
         CombFilter comb [numChannels][numCombs];
         AllPassFilter allPass [numChannels][numAllPasses];
         
-        SmoothedValue<float> damping, feedback, dryGain, wetGain1, wetGain2, wetGain3;
+        SmoothedValue<float> damping, feedback, dryGain, wetGain1, wetGain2;
+        std::vector<SmoothedValue<float>> wetGainVector;
         
-        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThreeVerb)
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ThreeVerb)
     };
     
 } // namespace juce

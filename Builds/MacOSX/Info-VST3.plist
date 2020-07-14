@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>com.yourcompany.ThreeVerb</string>
+    <string>com.VSTurbo.ThreeVerb</string>
     <key>CFBundleName</key>
     <string>ThreeVerb</string>
     <key>CFBundleDisplayName</key>
