@@ -7,9 +7,9 @@ ThreeVerbAudioProcessor::ThreeVerbAudioProcessor()
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::createLCRS(), true)
+                       .withInput  ("Input",  AudioChannelSet::ambisonic(2), true)
                       #endif
-                       .withOutput ("Output", AudioChannelSet::createLCRS(), true)
+                       .withOutput ("Output", AudioChannelSet::ambisonic(2), true)
                      #endif
                        )
 #endif
@@ -83,8 +83,10 @@ void ThreeVerbAudioProcessor::changeProgramName (int index, const String& newNam
 
 void ThreeVerbAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+
     threeVerb.reset();
-    threeVerb.setSampleRateMulti(sampleRate, 4);
+    threeVerb.setSampleRate(sampleRate);
+    
 }
 
 void ThreeVerbAudioProcessor::releaseResources()
@@ -127,7 +129,11 @@ void ThreeVerbAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuff
         buffer.clear (i, 0, buffer.getNumSamples());
 
     
-    threeVerb.processMulti(buffer);
+    auto const leftPointer = buffer.getWritePointer(0);
+    auto const rightPointer = buffer.getWritePointer(1);
+    
+    threeVerb.processStereo(buffer);
+
 
 }
 bool ThreeVerbAudioProcessor::hasEditor() const
