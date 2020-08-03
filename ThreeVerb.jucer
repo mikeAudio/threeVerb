@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="XdXuJ2" name="ThreeVerb" projectType="audioplug" displaySplashScreen="1"
               jucerFormatVersion="1" version="1.0.0" cppLanguageStandard="latest"
-              companyName="VSTurbo" jucerVersion="5.4.7">
+              companyName="VSTurbo Inc." jucerVersion="5.4.7">
   <MAINGROUP id="Wh9RaT" name="ThreeVerb">
     <GROUP id="{F3AD5B57-4C96-BF4A-BF32-0F99408CFA93}" name="Source">
       <FILE id="x9gqHd" name="ThreeVerb.h" compile="0" resource="0" file="Source/ThreeVerb.h"/>

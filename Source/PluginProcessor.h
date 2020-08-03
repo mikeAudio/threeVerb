@@ -54,6 +54,16 @@ class ThreeVerbAudioProcessor  : public juce::AudioProcessor
     private:
         
         ThreeVerb threeVerb;
+        juce::AudioProcessorValueTreeState valueTree;
+        ThreeVerb::Parameters parameters;
+        
+        
+        std::atomic<float>* size   = nullptr;
+        std::atomic<float>* damp   = nullptr;
+        std::atomic<float>* width  = nullptr;
+        std::atomic<float>* dry    = nullptr;
+        std::atomic<float>* wet    = nullptr;
+        std::atomic<float>* freeze = nullptr;
     
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThreeVerbAudioProcessor)
     };

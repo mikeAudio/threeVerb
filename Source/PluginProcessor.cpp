@@ -2,6 +2,18 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+juce::AudioProcessorValueTreeState::ParameterLayout createParamters()
+{
+    return {
+            std::make_unique<AudioParameterFloat>("size", "Size", 0.f, 1.f, 0.5f),
+            std::make_unique<AudioParameterFloat>("damp", "Damping", 0.f, 1.f, 0.5f),
+            std::make_unique<AudioParameterFloat>("width", "Width", 0.f, 1.f, 1.f),
+            std::make_unique<AudioParameterFloat>("wet", "Wet", 0.f, 1.f, 0.5f),
+            std::make_unique<AudioParameterFloat>("dry", "Dry", 0.f, 1.f, 1.f),
+            std::make_unique<AudioParameterBool>("freeze", "Freeze", false)
+    };
+}
+
 ThreeVerbAudioProcessor::ThreeVerbAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
@@ -11,9 +23,17 @@ ThreeVerbAudioProcessor::ThreeVerbAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::ambisonic(2), true)
                      #endif
-                       )
+                       ),
+valueTree(*this, nullptr, "VSTurbo", createParamters())
+
 #endif
 {
+    size   = valueTree.getRawParameterValue("size");
+    damp   = valueTree.getRawParameterValue("damp");
+    width  = valueTree.getRawParameterValue("width");
+    dry    = valueTree.getRawParameterValue("dry");
+    wet    = valueTree.getRawParameterValue("wet");
+    freeze = valueTree.getRawParameterValue("freeze");
 }
 
 ThreeVerbAudioProcessor::~ThreeVerbAudioProcessor()
@@ -104,8 +124,7 @@ bool ThreeVerbAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts
   #else
     // This is the place where you check if the layout is supported.
     // In this template code we only support mono or stereo.
-    if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+    if (layouts.getMainOutputChannelSet() != AudioChannelSet::ambisonic(2))
         return false;
 
     // This checks if the input layout matches the output layout
@@ -127,15 +146,20 @@ void ThreeVerbAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuff
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-
     
-    auto const leftPointer = buffer.getWritePointer(0);
-    auto const rightPointer = buffer.getWritePointer(1);
+    parameters.roomSize = size->load();
+    parameters.damping  = damp->load();
+    parameters.width    = width->load();
+    parameters.dryLevel = dry->load();
+    parameters.wetLevel = wet->load();
+    parameters.freezeMode = freeze->load();
+    
+    threeVerb.setParameters(parameters);
     
     threeVerb.processStereo(buffer);
-
-
 }
+
+
 bool ThreeVerbAudioProcessor::hasEditor() const
 {
     return true;
@@ -143,7 +167,7 @@ bool ThreeVerbAudioProcessor::hasEditor() const
 
 AudioProcessorEditor* ThreeVerbAudioProcessor::createEditor()
 {
-    return new ThreeVerbAudioProcessorEditor (*this);
+    return new GenericAudioProcessorEditor (*this);
 }
 
 void ThreeVerbAudioProcessor::getStateInformation (MemoryBlock& destData)

@@ -74,6 +74,8 @@ namespace juce
             const float wet = newParams.wetLevel * wetScaleFactor;
             dryGain.setTargetValue (newParams.dryLevel * dryScaleFactor);
             
+            wetGains.clear();
+            
             for(int i = 0; i < expNumChannels; i++)
             {
                 SmoothedValue<float> wetGain;
